@@ -20,11 +20,11 @@ A portable architecture and implementation guide for persistent memory in AI age
 
 **[阅读完整中文安装与实施指南 / Read the complete Chinese installation and implementation guide](docs/installation-guide.zh-CN.md)**
 
-指南包含架构、字段映射、八步接入流程、配置示例、SolBot 运行记录及 DSH 宿主接入说明。请从第 8 节的安装和接入流程开始，并结合宿主实际能力选择参数。参考部署的已实现能力与后续候选方案在指南中分别标注。
+请从指南第 7 节的八步安装流程开始，并按第 8 节为目标宿主制定配置与验收计划。**所有部署数值，以及验收项目、样本和通过阈值，必须由部署模型／部署人根据实际模型能力、底层实现和使用需求自主决定。** 第 9 节提供 DSH 接入位置映射，使用前须核对当前客户端。
 
-The guide includes architecture, field mappings, an eight-step integration process, configuration examples, SolBot operating records, and DSH integration notes. Start with Section 8 and select parameters for your host's actual capabilities. The guide distinguishes implemented behavior from proposed changes.
+Start with the eight-step integration process in Section 7, then define the target deployment's configuration and acceptance plan in Section 8. **The deploying model or person must independently choose all deployment values, acceptance checks, samples, and pass thresholds based on the actual model capabilities, host implementation, and intended use.** Section 9 maps DSH integration points; verify them against the target client.
 
-> 推荐配置面向 500K–1M+ 可用上下文窗口；小于 500K 的模型需要单独配置并验证。The recommended settings target 500K–1M+ usable context windows; smaller models require a separately sized and validated configuration.
+> **仅供参考 / Reference only:** 历史配置、候选参数和 SolBot 用例已集中到文末附录。它们不是部署默认值或通用模型验收标准；参考项目测试通过不代表本次部署通过。Historical configurations, candidate values, and SolBot cases are grouped in the appendices. They are not deployment defaults or universal acceptance criteria; reference-project results do not establish success for another deployment.
 
 ## 许可证 / Licensing
 
