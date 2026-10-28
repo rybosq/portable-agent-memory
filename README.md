@@ -18,13 +18,16 @@ A portable architecture and implementation guide for persistent memory in AI age
 
 ## 安装指南 / Installation guide
 
-**[阅读完整中文安装与实施指南 / Read the complete Chinese installation and implementation guide](docs/installation-guide.zh-CN.md)**
+- **[部署规范 / Deployment specification](docs/installation-guide.zh-CN.md)** — 默认部署规范。The default deployment specification.
+- **[历史参考资料 / Historical reference records](reference/solbot-v103.md)** — 历史查阅入口，不属于部署输入。Historical records, excluded from deployment inputs.
 
-请从指南第 7 节的八步安装流程开始，并按第 8 节为目标宿主制定配置与验收计划。**所有部署数值，以及验收项目、样本和通过阈值，必须由部署模型／部署人根据实际模型能力、底层实现和使用需求自主决定。** 第 9 节提供 DSH 接入位置映射，使用前须核对当前客户端。
+调用端读取[输入清单 / Input manifest](spec-manifest.json)，按 `default_inputs` 加载部署规范，并在索引、上下文注入与检索中排除 `excluded_globs` 匹配的文件。部署过程按需读取目标宿主代码、有效配置、当前路由能力资料与本次测量结果。
 
-Start with the eight-step integration process in Section 7, then define the target deployment's configuration and acceptance plan in Section 8. **The deploying model or person must independently choose all deployment values, acceptance checks, samples, and pass thresholds based on the actual model capabilities, host implementation, and intended use.** Section 9 maps DSH integration points; verify them against the target client.
+The caller reads the input manifest, loads the specification listed in `default_inputs`, and excludes files matching `excluded_globs` from indexing, context injection, and retrieval. During deployment, read the target host's code, effective configuration, current model-route capabilities, and measurements as needed.
 
-> **仅供参考 / Reference only:** 历史配置、候选参数和 SolBot 用例已集中到文末附录。它们不是部署默认值或通用模型验收标准；参考项目测试通过不代表本次部署通过。Historical configurations, candidate values, and SolBot cases are grouped in the appendices. They are not deployment defaults or universal acceptance criteria; reference-project results do not establish success for another deployment.
+从规范第 7 节的八步安装流程开始，并按第 8 节为目标宿主制定配置与验收计划。**所有部署数值，以及验收项目、样本和通过阈值，必须由部署模型／部署人根据目标环境自主决定。** 第 9 节提供 DSH 接入位置映射。
+
+Start with Section 7 and define the target deployment's configuration and acceptance plan in Section 8. **The deploying model or person independently chooses all deployment values, acceptance checks, samples, and pass thresholds for the target environment.** Section 9 maps DSH integration points.
 
 ## 许可证 / Licensing
 

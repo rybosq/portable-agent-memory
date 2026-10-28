@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "default_inputs": [
+    "docs/installation-guide.zh-CN.md"
+  ],
+  "excluded_globs": [
+    "reference/**"
+  ],
+  "note": "调用端按 default_inputs 加载部署规范，并在索引、上下文注入和检索中排除 excluded_globs 匹配的文件。"
+}
