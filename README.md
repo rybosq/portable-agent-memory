@@ -4,22 +4,23 @@ AI disclosure: This project was developed using Codex. Its core logic, code, and
 
 # Portable Agent Memory
 
-面向 Chatbot、AI Companion 和 AI Agent 的可移植持续记忆架构与安装实施指南。当前仓库发布完整技术文档，涵盖宿主接入、数据结构、运行规则和参考部署记录。
+Portable Agent Memory 帮助 Chatbot、AI Companion 和 Agent 保存交互经历，并随新证据修订记忆。普通记忆由 Sol-CLS 机制整合与发布，宿主可按需启用独立人格档案。
 
-A portable architecture and implementation guide for persistent memory in AI agents. This documentation repository covers host integration, data structures, operating rules, and reference deployment records for chatbots, AI companions, and agents.
+Portable Agent Memory helps chatbots, AI companions, and agents preserve experiences and revise their understanding as evidence changes. Sol-CLS governs ordinary memory updates and publication. Hosts can also enable an independent self-profile.
 
 ## 核心能力 / Core capabilities
 
 - **持久化与证据追溯 / Persistence and traceability** — 保存原始消息、来源引用、记忆版本与纠错记录。Preserve raw messages, evidence references, memory versions, and corrections.
-- **增量整理与恢复 / Incremental consolidation and recovery** — 定义周期整理、有效空变更、有界重试与隔离批次恢复。Define scheduled consolidation, valid no-change results, bounded retries, and recovery of quarantined batches.
-- **按需检索 / On-demand retrieval** — 通过作用域、分类、实体和别名筛选 SQL 条目，并按需回读原始证据。Retrieve scoped SQL entries by category, entity, and alias, with evidence lookup when needed.
+- **普通记忆整合 / Memory consolidation** — 前后台共用逐项回执，核验来源、权限、目标版本与适用投递回执后发布当前理解。Foreground and background work share per-item receipts. Publication checks sources, permissions, target revisions, and applicable delivery receipts.
+- **可选人格档案 / Optional self-profile** — Agent 可单独审阅和修订对自身的认识。The agent can review and version its self-understanding independently of ordinary memory.
+- **按需检索 / On-demand retrieval** — 按作用域和来源权限筛选条目，再按需回读证据。Retrieve entries within the authorized scope and follow their evidence when needed.
 - **上下文预算 / Context budgeting** — 计量完整请求，为各工作流设置预算，并协调容量整理与历史释放。Measure complete requests, budget each workflow, and coordinate consolidation and history release.
 - **视觉记忆复用 / Visual memory reuse** — 按图片身份与作用域复用摘要，保留每次出现的语境，支持按需补看。Reuse image summaries within their scope, preserve each occurrence's context, and support reinspection.
 
 ## 安装指南 / Installation guide
 
 - **[部署规范 / Deployment specification](docs/installation-guide.zh-CN.md)** — 默认部署规范。The default deployment specification.
-- **[历史参考资料 / Historical reference records](reference/solbot-v103.md)** — 历史查阅入口，不属于部署输入。Historical records, excluded from deployment inputs.
+- **部署参考 / Deployment references** — 查阅不同时期的实现与测量记录。See the [historical installation / 早期安装记录](reference/solbot-v103.md) and the [Sol-CLS roles, settings, and observations / Sol-CLS 分工、参数与实测](reference/solbot-cls-v0.2.md).
 
 调用端读取[输入清单 / Input manifest](spec-manifest.json)，按 `default_inputs` 加载部署规范，并在索引、上下文注入与检索中排除 `excluded_globs` 匹配的文件。部署过程按需读取目标宿主代码、有效配置、当前路由能力资料与本次测量结果。
 
